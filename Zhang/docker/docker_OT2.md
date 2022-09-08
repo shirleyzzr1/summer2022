@@ -80,3 +80,7 @@ docker run -it -p 22 -p 8085 ros2:latest
 
 
 find some way to add parameter for ip address instead of hardcode everything
+
+
+
+# `pip install pydantic==1.8.2`
