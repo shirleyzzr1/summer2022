@@ -373,16 +373,274 @@ LSTM to predict solar irradiance based on cloud coverage and solar irradiance
 
 |  | Goal | Priority | Notes |
 | --- | --- | --- | --- |
-| 🟩 | Wrap up python job for submission to Swing | High |  |
-| 🟩 | Train model | High | <ul><li>Train:</li><ul><li>Number of stacked cells</li><li>LSTM vs GRU vs SimpleRNN</li><li>Start w/ one-hour ahead, then try one-day ahead</li></ul> |
-| 🟩 | Create poster for Learning on the Lawn | High | Due **Thursday, 5PM** |
+| ✅ | Wrap up python job for submission to Swing | High |  |
+| ✅ | Train model | High | <ul><li>Train:</li><ul><li>Number of stacked cells</li><li>LSTM vs GRU vs SimpleRNN</li><li>Start w/ one-hour ahead, then try one-day ahead</li></ul> |
+| ✅ | Create poster for Learning on the Lawn | High | Due **Thursday, 5PM** |
 
 ✅ Completed, 🟩 In-Progress, ❎ Uncompleted (by end of week)
 
 ## Monday, June 18
 
 - Set up goals for week
-- 
+- Finished refactoring training/hyperparameter optimization
+- Configured slurm file to run training/hyperparameter optimization code
+- Scheduled training for overnight
+- Worked on poster (additional research on background)
 
 **Primary Project:**
 LSTM to predict solar irradiance based on cloud coverage and solar irradiance
+
+## Tuesday, June 19
+
+- Worked on poster (text writing, formatting)
+- Fixed a few misc. bugs in code (saving model, saving loss history)
+- Visualized results from training
+    - Looks exciting!
+
+**Primary Project:**
+Poster
+
+## Wednesday, June 20
+
+- Attended EDU Weekly Seminar - Resume Workshop
+- Worked on poster (finished first draft)
+    - Added additional data visualization
+- Attended Summer Interns Check-In
+
+**Primary Project:**
+Poster
+
+## Thursday, June 21
+
+- Met with AI/Algorithm student group
+- Finished poster! (added conclusions, misc retouches and fixes)
+
+**Primary Project:**
+Poster
+
+## Friday, June 22
+
+- Worked on paper (detailed explanations of RNNs, LSTMs, GRUs)
+- Organized meeting time with mentors for next week
+
+**Primary Project:**
+Paper
+
+# Week 9 (7/25 - 7/29)
+
+## Goals
+
+|  | Goal | Priority | Notes |
+| --- | --- | --- | --- |
+| 🟩 | Look into pywaggle, dockerize model | High |  |
+| ❎ | Get access to container | High |  |
+
+✅ Completed, 🟩 In-Progress, ❎ Uncompleted (by end of week)
+
+## Monday, June 25
+
+- Set up goals for week
+- Met with mentors
+    - Notes
+        
+        Check model performance on other months
+        
+        Pywaggle
+        
+        Ask Raj to get access to the container for SGP
+        
+        Try using Virtual Waggle (ask Sean)
+        
+        You upload Docker container to ECR (edge computing repo)
+        
+        Seeing resource usage for different models: plug and chug
+        
+- Checked for seasonality-based errors by visualizing model performance on different months
+- Implemented splitting data by seasons for season-based training (i.e., distinct model for each season)
+    - Submitted job to run overnight
+- Researched pywaggle
+
+**Primary Project:**
+Season-based model
+
+## Tuesday, June 26
+
+- Debugged issue in seasonal data splitting
+    - Submitted seasonal training job to run overnight
+- Researched Docker
+    - Installed, went through Getting Started tutorial
+    - Researched dockerizing ML models
+
+**Primary Project:**
+Season-based model, Plug-in
+
+## Wednesday, June 27
+
+- Attended EDU Weekly Seminar - Special Presentation - “Climate and Energy Action” Strategic Science Initiative
+- Worked on dockerizing model (reading codebase, implementing preprocessing)
+    - Reading through: avian-diversity-monitoring
+- Attended Summer Interns Check-In
+- Met with mentors to discuss questions regarding longer-term forecasting and pywaggle
+    - Longer-term forecasting: if using recursive predictions, train model to just look at solar irradiance (don’t try to predict cloud coverage). alternatively, just train new models for different term lengths
+    - May need to ask for more help tomorrow on pywaggle; want to confirm functionality (e.g., plugin.get, what to name publish, how to run test code etc.)
+
+**Primary Project:**
+Season-based model, Plug-in
+
+## Thursday, June 28
+
+- Met with AI/Algorithm student group
+    - Discussed plug-in w/ Sean (nature of plug-in, potentially shifting to data analysis tool for historical data)
+    - Engaged follow-up discussion with Sean, Bobby, and Seongha
+        - Call model once, collect data, and predict once. (Don’t repeatedly collect data and predict with the same plug-in call)
+        - Shifting focus to data analysis tool OK’d
+- Prepared models for tool (extracting from optuna studies, compressed to tflite, saved into file)
+- Debugged issue with running model with tflite
+
+**Primary Project:**
+Data analysis tool
+
+## Friday, June 29
+
+- Continued tool
+    - Finished implementation with dummy data (loading model, running predictions)
+    - Debugged segmentation fault
+        - Looks like issue in package compatability (breaks on pydda_env, runs fine on local tf)
+        - pydda_env: tf 2.7
+        - Duplicating environment seems to run into issues? Look into what version of tf used by sensors
+
+**Primary Project:**
+Data analysis tool
+
+# Week 10 (8/1 - 8/5)
+
+## Goals
+
+|  | Goal | Priority | Notes |
+| --- | --- | --- | --- |
+| ✅ | Complete presentation recording | High | Due 8/1, 5PM |
+| ✅ | Complete project report | High | Due 8/5, 10:59PM |
+| ✅ | Complete general audience abstract | High | Due 8/5, 10:59PM |
+| ✅ | Complete peer review | High | Due 8/5, 10:59PM |
+| 🟩 | Get SAGE data access | Med |  |
+| 🟩 | Complete data analysis tool | Med |  |
+| 🟩 | Get access to container | Low | Sean |
+
+✅ Completed, 🟩 In-Progress, ❎ Uncompleted (by end of week)
+
+## Monday, August 1
+
+- Set up goals for week
+- Completed SULI Post-Participation Survey
+- Recorded and uploaded poster presentation
+- Wrote (non-general) abstract and uploaded with poster to SULI deliverables website
+- Worked on paper (writing abstract, introduction, reading through AIP formatting)
+
+**Primary Project:**
+Deliverables
+
+## Tuesday, August 2
+
+- Worked on paper (wrote results, future work, acknowledgements, citations)
+    - Did additional data visualization
+- Submitted job for 1-day forecasting to run overnight (6 days in, 1 day out)
+
+**Primary Project:**
+Deliverables
+
+## Wednesday, August 3
+
+- Worked on paper (researched and wrote introduction, citations)
+- Attended Learning Off the Lawn (MCS Room)
+    - Completed peer review (Isaiah Pritchard)
+- Submitted revised job for 1-day forecasting to run overnight (6 days in, 1 day out)
+
+**Primary Project:**
+Deliverables
+
+## Thursday, August 4
+
+- Met with AI/Algorithm student group
+- Presented at and attended Learning On the Lawn!
+- Worked on paper (overall revision/re-read, informal peer review, citations)
+
+**Primary Project:**
+Deliverables
+
+## Friday, August 5
+
+- Finished paper (citations, general last fixes and read-throughs)
+- Finished general audience abstract
+- Submitted job for 6 days in/1 day out (resampled to every 30 minutes)
+
+**Primary Project:**
+Deliverables
+
+# Week 11 (8/8 - 8/12)
+
+## Goals
+
+|  | Goal | Priority | Notes |
+| --- | --- | --- | --- |
+| ✅ | Train models for other time intervals | High | e.g. 6-in, 1-out |
+| 🟩 | Get SAGE data access | Med |  |
+| ✅ | Complete data analysis tool | Med |  |
+| 🟩 | Get access to container | Low | Sean |
+
+✅ Completed, 🟩 In-Progress, ❎ Uncompleted (by end of week)
+
+## Monday, August 8
+
+- Set up goals for week
+- Investigated results for 6-in, 1-out
+    - Obtaining study, data visualization
+- Set up new batch for 6-in, 1-out resampled to every 60 minutes
+
+**Primary Project:**
+Different time-interval model
+
+## Tuesday, August 9
+
+- Analyzed 6-day-in, 1-day-out, 30-min model
+- Finished model tool implementation (new code, lots of refactoring, etc.)
+    - Only works with dummy data, will have to rework to work w/ waggle data
+- Met with Bobby to discuss performance and next steps
+
+**Primary Project:**
+Data analysis tool
+
+## Wednesday, August 10
+
+- Submitted job for 12-hour-in, 3-hour-out model
+- Finished data analysis tool except for SAGE access
+- Worked on plug-in
+    - Implemented functionality
+        - Need to check if data collection done properly
+    - Worked on documentation for training model
+        - Heavily refactored
+
+**Primary Project:**
+Data analysis tool/Plug-In
+
+## Thursday, August 11
+
+- Fixes various bugs in plugin
+    - Runs with dummy code on TF 2.9
+- Met with Bobby for final steps and personal feedback interview
+- Met with Seongha, Yongho, Sean
+    - Discussed status and next steps for last (!) day
+- Continued refactoring training code/writing documentation
+
+**Primary Project:**
+Plug-In
+
+## Friday, August 12
+
+- Met with Seongha for final steps and personal feedback interview
+- Refactored and documented code
+- Finished documenting/rewriting data loading/preprocessing code
+- Finished documenting/rewriting training and optimization code
+- Worked on re-adding code for seasonal models. Finished adding code for seasonal models and all documentation on Sunday, 8/14.
+
+**Primary Project:**
+Plug-In

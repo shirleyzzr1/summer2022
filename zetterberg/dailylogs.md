@@ -255,5 +255,110 @@
 - Continued improving power spectra plot code to run in a reasonable amount of time
 - Worked on figures for final presentation
 
+---
+
+### Week 8
+
+#### Goals for the Week
+- Finish and submit poster
+- Do Power Spectra Plot for all 2 months
+- Solidify physical interpretation of clusters
+- Begin poster presentation and paper
+
+#### Monday July 18th, 2022
+
+- Continued working on poster
+- Continued power spectra plotting
+
+#### Tuesday July 19th, 2022
+
+- Continued working on poster
+- Finished power spectra plot for poster
+
+#### Wednesday July 20th, 2022
+
+- Weekly Student Seminar
+- Finished poster
+
+#### Thursday July 21st, 2022
+
+- AI Algorithm Student Group meeting
+- Submitted poster
+- Draft for paper
+
+#### Friday July 22nd, 2022
+
+- Worked on draft for paper
+- Continued working on power spectra plot for all 2 months
+
+---
+
+### Week 9
+
+### Goals for the week
+- Create draft of paper
+- Finish power spectra
+- Create video presentation to turn in to SULI
+- Create presentation for Brookhaven National Lab
+
+#### Monday July 25th, 2022
+- Created final power spectra plot for all 2 months, results lined up with plot used on poster
+- Worked on clustering without using PCA
+- Work on research paper
+
+#### Tuesday July 26th, 2022
+- Compared clusters with and without PCA, only a ~1.5% difference, so PCA is not needed but does not drop relevant information
+- Continued working on research paper
+
+#### Wednesday July 27th, 2022
+- Worked on research paper
+- Finished abstract
+- Student Connects Group
+- Weekly student seminar
+
+#### Thursday July 28th, 2022
+- Created presentation for Brookhaven National Laboratory
+- AI Algorithm Student Group meeting
+- Worked on research paper
+
+#### Friday July 29th, 2022
+- Worked on presentation for Brookhaven National Laboratory
+
+---
+
+### Week 10
+
+#### Goals for the week
+- Finish presentation for BNL
+- Finish research paper
+- Finish 10 minute Learning on the Lawn video
+- Clean up and submit code on Github
+
+---
+
+#### Monday August 1st, 2022
+- Met with mentor and other team members to practice presentation
+- Finished presentation for BNL
+- Uploaded recording for Learning on the Lawn
+
+#### Tuesday August 2nd, 2022
+- Changed plot colormaps to colorblind friendly
+- Worked on research paper
+- Created histogram of cluster distribution
+
+#### Wednesday August 3rd, 2022
+- Worked on research paper
+- Presented to BNL
+- Cleaned up codes to upload to Github
+- Worked on SULI Peer Review
+
+#### Thursday August 4th, 2022
+- Finished up SULI deliverables
+- Presented at Learning on the Lawn
+
+#### Friday August 5th, 2022
+- Cleaned out ANL desktop
+- Uploaded code and data for future use
+
 
 

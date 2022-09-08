@@ -1,9 +1,128 @@
 # Zoe Snead Daily Activity Log  
 My daily activity! Thoughts, questions, quick links. Most recent additions are at the top <3
 
+## Week 9: 8/8 to 8/12 (last week!)
+
+This week has been all working on my final write up, which will be a GitHub based guide that contains everything we tried when connecting to networks, what works, what doesn't, what issues we've solved and one's we haven't. The hope is that this will be a resource for the next person who tries to connect to the ANL network when it is up and running. The other part of this final write-up will be cleaning up my notes on open source 5G cores. 
+
+## Week 8: 8/1 to 8/5
+
+### Friday 8/5
+
+- Raj and I went out and tried again with the modems
+  - same problems, but now we have some fun phone apps that prove we COULD connect to 5G NSA
+  - we think it's a problem with the SIM card are the modem, will maybe try getting a firmware update for the modem??
+- started on write-up!
+
+### Thursday 8/4
+
+- Met with Raj and tried connecting again to 5G using his phone SIM card
+  - succesfuly connects to 4G, speeds are meh
+  - you can force the modem to only work on 5G but then it just disconnects
+  - using `sudo qmicli -d /dev/cdc-wan0 --device-open-proxy --nas-get-signal-info` it will list the connection speeds for 4G and 5G. It shows it can check the quality of the 5G signal but for some reason can't connect to that signal
+  - we saw that we were connected to LTE band 30, which isn't anywhere near the possible overlap between 4G and 5G
+  - Raj is going to put the SIM card back in his phone and try to see wat 5G band his phone connects to because his phone can definitely connect
+  - Raj thinks there might be some firmware update we could put onto the modem, if the modem is the problem (maybe?)  
+- Returned older blue modem to 446
+
+- Write-Up/White Paper Goals:
+  - Detail what we have tried regarding connecting to 4G/5G and what has and hasn't worked. A what-not-to-do is just as valuable as a what-to-do
+  - list helpful debugging tips and things to try
+  - Explain 5G Core Decision Matrix  
+
+### Wednesday 8/3
+
+- I got the NX to register the device so it can set up the ttyUSB connection, but now it's having trouble with data overruns (the buffer fills with new information before it can read what it has)
+  - Raj is going to see if we can update the the NX system. No success there today, but we might be able to try again Thursday?
+- updated the [decision matrix](https://github.com/waggle-sensor/summer2022/blob/main/snead/5GCoreDecisionMatrix_8-3-2022.pdf) with new information
+- Using Raj's 5G enabled phone SIM, we were able to connect the modem and computer (just regular Linux laptop) to 4G!!
+  - you have to send the modem an AT command `AT+CGDCONT?` and replace it's initial bearer APN (initial bearer is listed in the `mmcli` output)
+  - might try tomorrow to go off campus and connect to 5G, because apparently the SIM cards I've been using aren't 5G equipped even though we were told they were? booo
+
+#### To Do
+
+- downlink, I think the lab is almost ready?
+- start on whitepaper
+- update the NX and try to get it connecting to the modem
+- take the old blue modem back to the lab and plug it back into the server
+- go off campus with 5G enabled SIM and try to connect
+
+### Monday 8/1 and Tuesday 8/2
+
+- Very frustrating, I have spent these past two days trying to figure out why the Nano drops its connection with the modem after connecting
+  - it was a problem with the ModemManager driver, since the nano runs on Ubuntu 18.04, the mmcli was out of date. Follow this [link](https://launchpad.net/~aleksander-m/+archive/ubuntu/modemmanager-bionic) to get a PPA that's a newer versionn (not the newest but still)
+  - problems: the driver isn't the most up to date, so qmicli doesn't work, but that is manageable
+  - connection is extremely slow over 4G (~1Mbps uploads and downloads), whereas on my laptop it is extremely fast (100 Mbps upload and 200 Mbps download)
+- Raj set me up with a Jetson NX to try the same thing
+  - can't get the computer to establish a ttyUSB connection 
+
+## Week 7: 7/25 to 7/29
+
+### Friday 7/29
+
+- Went to lab, radios are installed, but something is wrong with the radio SFP, so that will need to be worked by the fiber guys :(
+- The problem was with the SIM card, it was older than we thought and it had been deactivated
+- Got a new SIM card that can connect to 4G!
+  - I scanned the networks around Argonne and outside of Argonne (in a Starbucks) and did not find any 5G signals, so will have to wait until our core is back up to work with that
+  - I can access the internet and ping my phone using the modem, but cannot ping Ziad's computer
+  - I tried connecting the modem to the Nano, and it kept losing connection to the modem. Not just a faltering connection to 4G, but to the modem itself. I want to bring this up with Raj/Joaquin. I have a feeling this Nano can only handle 3G data? Based on the network set up wizard...
+
+#### To Do
+
+- Troubleshoot connecting with the Nano (computer can do fine)
+- maybe write up a how-to type guide on how I would troubleshoot connecting to 5G? Because we are getting close to the end of the internship and  haven't been able to do that yet
+- all other compounding To Do's
+
+### Thursday 7/28
+
+- Went to starbucks in the morning to try connecting to the modem, still no luck. It could be an issue with the home network not being present, maybe the SIM card, or maybe an OS problem. I don't think it's a problem with the modem because it talks and responds properly, it's just a matter of not being able to connect the computer to the data of the modem. Doesn't work on Windows or Linux, so I don't think it's the OS but still...
+  - SIM Card's home network is AT&T with MCCMNC=310170, but that network isn't present in network scans  
+
+### Wednesday 7/27
+
+- issues connecting to the LTE served by the Telit modems. Raj and I tried mmcli, qmicli, and a couple other things. it doesn't connect to my Linux computer, the nano, nor my Windows computer
+  - When I tried connecting via Windows, I ran a troubleshooting wizard and it says that there's just no service to connect to
+
+#### To Do
+
+- first thing tomorrow I am going to drive out of Argonne campus and try to connect from a starbucks or something to see if no service truly is the issue. I don't know what to do after that... more help on forums I guess
+- All previous To Dos...
+
+### Tuesday 7/26
+
+- Met with Raj to sort out project plans
+  - Gave me an Edge AI Device that Waggle runs on so I can try connecting it to the Telit modem
+  - Gave me an AT&T SIM card so I can connect to that 5G network rather than to our own (will have to leave Argonne campus to connect). This way I can still run tests that we can use to verify our own 5G network if that construction finishes up
+  - He's talking with Argonne tech about giving us access to the internet
+- Getting my Telit modem from the lab to start testing that ^^ 
+
+#### To Do
+
+- previous unresolved to dos
+- ask Raj about AT&T config settings
+
+### Monday 7/25
+
+- Met with Joaquin to check in about progress
+  - it's looking like a demonstration of information flow from a Waggle Node over 5G is not going to be possible given the delays with the fiber installation, so we might look into other avenues for research
+  - asking Raj about the Waggle desktop, seeing if doing something with that would be possible
+- finished looking into UPF implementation and edge computing in 5G cores
+  - ONAP and SD-Core seem to be the only ones with current ability to support edge computing (ONAP a little vague on that front)
+  - Magma has plans for it in the future
+
+#### To Do
+
+- email ONAP, ask about hardware scaling and possible their ability to support EC
+- update decision matrix to include EC info and R&D interest 
+- maybe start on white paper? would basically be the decision matrix then an explanation of each of it's boxes
+- next monday's check in we'll ask about other things I can do with my last two weeks
+
 ## Week 6: 7/18 to 7/22
 
-### Monday 7/18
+- in and out of ability to work due to COVID
+- added info about contributors and members of each 5G core, I'm unsure how to tell which is biggest in the R&D community
+  - [NSF](https://www.prnewswire.com/news-releases/national-science-foundation-funded-platforms-for-advanced-wireless-research-project-office-announces-launch-of-openairx-labs-oax-to-accelerate-development-and-testing-of-an-open-source-5g-standalone-software-stack-301304723.html) has partnered with OAI????
+- started looking into edge computing abilities of each 5G core org
 
 #### To Do
 

@@ -258,8 +258,93 @@ Things to do:
 - [ ] Finishing up creating the Ansible script by this Friday (or ASAP)
 
 #### Wednesday July 13th
-- [x] Attended Yomi presentation presentation regarding his current work on application profiling
+- [x] Attended Yomi presentation regarding his current work on application profiling
 - [x] SSH setup and tested the Ansible script on the New Nano 
 
 #### Thursday July 14th
+- [x] Done with Ansible script
+- [x] Had a meeting with EDU team and Robotic team
+
 #### Friday July 15th
+- [x] Ansible script final test
+
+----------------------------------------------
+### Week 8: 7/18 to 7/22 ###
+#### Monday July 18th
+- [x] Prepared meeting with Robotic teams,
+
+#### Tuesday July 19th
+- [x] Had a meeting with Doga. Summary:
+1. Which one is the Default machine mainly used (I can ask to Rory directly)
+2. Pipespipes configuration be careful with channels 8/single (attached figures)
+3. Is there any other repo so that I can use it as a reference except this (https://github.com/AD-SDL/ot2_driver)? Yes, for scheduler: https://github.com/AD-SDL/workcell_manager, or more details: https://github.com/AD-SDL/ot2_workcell
+4. OT-2 supports http? Yes, also any message socket will be operated (such as MQ messaging protocol. zeroMQ socket, client, server configuration, already installed on RPI for OT-2)
+5. Scheduler is not just designed to communicate with OT-2, they are able to communicate with other robots they have.
+6. Diagram explanation -ROS master (ross master, scheduler…. )
+	- Data is stored in the MySQL (Unique id, Type, Protocol_file (binary to normal text). Currently, it is an early step, and these parameters would be changed according to the future goals.
+	- Username is just a root, IP is a robot IP, port number must be the same as the server side, such as 8085 for example, * (accept any IP address), Stdout (it means that it will return output message (protocol execute)
+	- To run his code uploaded on the GitHub, of course it is always first to execute listener (server) first. Otherwise, the connection won’t be established.
+	- The second one is an any small computer. He uses his RPI for testing, but it would be running via Jetson Nano. As long as it is Ubuntu based (like 18.04 or above version, it works.
+ 7.  SSH setup: https://support.opentrons.com/s/article/Setting-up-SSH-access-to-your-OT-2
+Conda
+```Pip3 install zmq``` Python3 is required, not Python2
+```Ssh key of course important```
+```git clone https://github.com/AD-SDL/ot2_driver```
+```pip install -e .```
+My personal note: Need to conduct research, protocol_handler, library module name paramiko (implementation of the SSHv2 protocol), SCPClient (scp protocol file to the robot, zeroMQ to let robot run the script and send the status back to master. Scheduler decide which OT2 to run the protocol, RPL datebase, keep track of protocol. Master send protocol file to database. External rosnode scp file to OT2, get protocol file from database. OT2 listener wait until protocol compelete it, and send message back to rosnode. (follow the chart on github)
+Set up ssh and save it inside opentron different type of ssh key https://support.opentrons.com/s/article/Setting-up-SSH-access-to-your-OT-2
+Thing to do by next week:
+	- If we have a question we can ask Rory or Kyle. They work on the way how to control robots depends on the last week meetings. Opentrons not currently using ROS directly
+- In general, networking connection and remote access were discussed this week. Next Wednesday (27th) around 10:30AM, we will talk about ROS (workflow.json file)
+
+#### Wednesday July 20th
+- [x] Had a meeting with Joe & Aldo to discuss about Ansible script and Jetson Nano documentations
+
+#### Thursday July 21th
+- [x] Had a weekly meeting with Nano edu team & Robotic team
+- [x] Make a communication demo with Kojo and Shirley
+
+#### Friday July 22th
+- [x] Conducted research into ROS & docker
+- [x] Jetson Nano re-flashed and re-setup to test Ansible script
+
+----------------------------------------------
+### Week 9: 7/25 to 7/29 ###
+#### Monday July 25th
+- [x] Ansible script review 1 with Joe
+- [x] Attended Cerebras CSL SDK Training
+
+#### Monday July 26th
+- [x] Ansible script review 1 with Joe
+
+#### Monday July 27th
+- [x] Ansible script review 3 with Joe
+
+#### Monday July 28th
+- [x] Ansible script review 4 with Joe
+
+#### Monday July 29th
+- [x] Ansible script review 5 with Joe
+
+----------------------------------------------
+### Week 10: 8/1 to 8/5 ###
+#### Monday August 1th
+- [x] Had a meeting with Yongho, Shirley and Kojo to catch up the robotic works
+
+#### Tuesday August 2th
+- [x] Had a meeting with Joe & Aldo to discuss about the Nano documents
+- [x] Finished the Nano kit doc and shared it to edu slack
+
+#### Wednesday August 3th
+- [x] Created a robotic repo
+
+#### Thursday August 4th
+- [x] Had a weekly meeting Nano Edu, and robotic
+- [x] Joined the meeting with robotic team (Rory and Kyle) 
+
+Things to do:  
+- [ ] scp set up to run Rory's code: scp nucvision0@130.202.148.70:/home/nucvision0/yolov5/runs/train/exp2/weights/best.pt
+
+#### Friday August 5th
+Things to do:  
+- [ ] Need to contact to Rory as setting up scp to run his code has an issue
